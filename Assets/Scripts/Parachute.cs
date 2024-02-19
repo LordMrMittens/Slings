@@ -13,6 +13,9 @@ public class Parachute : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //move bomb side to side
+        //alternate direction of bomb fall
+        //stay away from walls
+        //optional - steer towards target
     }
 }

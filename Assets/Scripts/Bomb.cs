@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class Bomb : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    bool bCanExplode = true;
+    public void Explode()
     {
-        
+        //play animation
+        //take "life" away
+        //destroy 
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Disable()
     {
-        
+        bCanExplode = false;
+        // launch toward the sky and edges of screen
     }
 }

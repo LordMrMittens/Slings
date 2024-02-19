@@ -15,4 +15,17 @@ public class Launcher : MonoBehaviour
     {
         
     }
+    //on click 
+    //check that it is valid click area
+    //spawn slingshot and bullet if so
+
+    //on pull
+    //turn slingshot so it faces ball
+    //stretch elastic parts
+
+
+    //on release
+    //calculate direction
+    //calculate force
+    //shoot bullet
 }
