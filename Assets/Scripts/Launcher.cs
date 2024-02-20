@@ -9,7 +9,7 @@ public class Launcher : MonoBehaviour
     [SerializeField] float forceOffset = 10;
     void Update()
     {
-        if (Input.GetMouseButton(0)&& slingShot != null)
+        if (Input.GetMouseButton(0)&& slingShot != null && projectile != null)
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePos.z = 0;
@@ -24,7 +24,7 @@ public class Launcher : MonoBehaviour
         projectile = Instantiate(ProjectilePrefab, position, Quaternion.identity);
     }
     public void Shoot(){
-        if(slingShot == null) return;
+        if(slingShot == null || projectile == null) return;
         Vector3 force = (slingShot.transform.position - projectile.transform.position ) * forceOffset; //make it an offset from the slingshot distance to the mouse
         projectile.GetComponent<Rigidbody2D>().AddForce(force, ForceMode2D.Impulse);
         DestroySlingShot();

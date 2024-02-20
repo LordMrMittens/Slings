@@ -23,7 +23,7 @@ public class BombGenerator : MonoBehaviour
         if(Time.time - timeOfLastBomb > creationFrequency)
         {
         float randomX = UnityEngine.Random.Range(bombCreationBounds.x, MathF.Abs(bombCreationBounds.x));
-        Vector2 spawnPoint = new Vector2(randomX, MathF.Abs(bombCreationBounds.y)); //add offset so bombs are created off screen
+        Vector2 spawnPoint = new Vector2(randomX, MathF.Abs(bombCreationBounds.y-1)); //add offset so bombs are created off screen
         Instantiate(TestObject, spawnPoint, Quaternion.identity);
         timeOfLastBomb = Time.time;
         }

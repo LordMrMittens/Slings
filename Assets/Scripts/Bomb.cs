@@ -3,25 +3,32 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-public class Bomb : MonoBehaviour
+public class Bomb : Projectile
 {
     bool bCanExplode = true;
     CircleCollider2D circleCollider;
     Rigidbody2D rb;
+    [SerializeField] float flyAwaySpeedOffset = 10;
+    [SerializeField] float flyAwayVerticalOffset = 5;
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.
     /// </summary>
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         circleCollider = gameObject.GetComponent<CircleCollider2D>();
         rb = gameObject.GetComponent<Rigidbody2D>();
     }
-    void Update()
+    protected override void Update()
     {
-        if(transform.position.y < (GameManager.instance.screenBounds.y * -1)+.5f && bCanExplode)
+        base.Update();
+        if (bCanExplode)
         {
-            Explode();
+            if (transform.position.y < GameManager.instance.screenBounds.y + .5f)
+            {
+                Explode();
+            }
         }
     }
     public void Explode()
@@ -37,11 +44,12 @@ public class Bomb : MonoBehaviour
 
         // launch toward the sky and edges of screen
     }
-    private void OnCollisionEnter(Collision other) {
+    private void OnTriggerEnter2D(Collider2D other) {
+        
         if(other.gameObject.tag == "Projectile")
         {
-            Vector3 velocity = other.gameObject.GetComponent<Rigidbody2D>().velocity;
-            Vector3 direction = (other.transform.position - transform.position) * velocity.magnitude;
+            Vector3 direction = ( transform.position - other.transform.position ).normalized * flyAwaySpeedOffset;
+            direction.y+=flyAwayVerticalOffset;
             Disable(direction);
         }
     }
