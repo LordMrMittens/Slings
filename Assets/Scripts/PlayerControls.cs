@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    
-    [SerializeField] LayerMask layerMask;
     [SerializeField] GameObject slingShotPrefab;
     [SerializeField] GameObject projectilePrefab;
     Launcher launcher;
@@ -15,7 +13,6 @@ public class PlayerControls : MonoBehaviour
         launcher = GetComponent<Launcher>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if(Input.GetMouseButtonDown(0)){
