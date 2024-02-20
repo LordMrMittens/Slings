@@ -7,7 +7,7 @@ public class Bomb : Projectile
 {
     bool bCanExplode = true;
     CircleCollider2D circleCollider;
-    Rigidbody2D rb;
+
     [SerializeField] float flyAwaySpeedOffset = 10;
     [SerializeField] float flyAwayVerticalOffset = 5;
     /// <summary>
@@ -18,7 +18,7 @@ public class Bomb : Projectile
     {
         base.Start();
         circleCollider = gameObject.GetComponent<CircleCollider2D>();
-        rb = gameObject.GetComponent<Rigidbody2D>();
+        
     }
     protected override void Update()
     {
@@ -37,6 +37,8 @@ public class Bomb : Projectile
     }
     public void Disable(Vector3 direction)
     {
+        transform.parent = null;
+        Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.AddForce(direction, ForceMode2D.Impulse);
         bCanExplode = false;
