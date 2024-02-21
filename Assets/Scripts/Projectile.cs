@@ -18,6 +18,9 @@ public class Projectile : MonoBehaviour
             canDisappear = true;
         }
         if(canDisappear && rend.isVisible == false){
+           if(transform.parent != null){
+               Destroy(transform.parent.gameObject);
+           }
             Destroy(gameObject);
         }
     }

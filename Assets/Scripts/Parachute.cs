@@ -21,10 +21,6 @@ public class Parachute : MonoBehaviour
     {
         Sway();
         Steer();
-        if (bomb == null)
-        {
-            Destroy(this);
-        }
     }
     void Sway(){
         float angle = Mathf.Sin(Time.time * (swaySpeed + offset)) * swayDistanceInAngles;
@@ -32,7 +28,7 @@ public class Parachute : MonoBehaviour
     }
     void DetachFromBomb(){
         rb.gravityScale = -2;
-        Destroy(this,3f);
+        Destroy(gameObject,3f);
     }
     void Steer(){
         if (transform.position.x < GameManager.instance.screenBounds.x +.5f)

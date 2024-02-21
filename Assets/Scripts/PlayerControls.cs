@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour
 {
     [SerializeField] GameObject slingShotPrefab;
-    [SerializeField] GameObject projectilePrefab;
+    [SerializeField] Bullet projectilePrefab;
     Launcher launcher;
     void Start()
     {

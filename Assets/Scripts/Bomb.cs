@@ -49,14 +49,21 @@ public class Bomb : Projectile
         bCanExplode = false;
         circleCollider.enabled = false;
         OnDisable.Invoke();
-        // launch toward the sky and edges of screen
     }
-    private void OnTriggerEnter2D(Collider2D other) {
-        
-        if(other.gameObject.tag == "Projectile")
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        HandleBulletCollision(other);
+    }
+    private void OnTriggerStay2D(Collider2D other) {
+        HandleBulletCollision(other);
+    }
+    private void HandleBulletCollision(Collider2D other)
+    {
+        if (other.gameObject.tag == "Projectile")
         {
-            Vector3 direction = ( transform.position - other.transform.position ).normalized * flyAwaySpeedOffset;
-            direction.y+=flyAwayVerticalOffset;
+            if (other.gameObject.GetComponent<Bullet>().bIsBeingGrabbed) return;
+            Vector3 direction = (transform.position - other.transform.position).normalized * flyAwaySpeedOffset;
+            direction.y += flyAwayVerticalOffset;
             Disable(direction);
         }
     }
