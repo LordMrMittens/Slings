@@ -41,7 +41,6 @@ public class CloudGenerator : MonoBehaviour
             {
                 clouds[i].timeOfLastCloud = Time.time;
                 clouds[i].CloudFrequency = SpawnCloud(clouds[i]);
-                Debug.Log($"Cloud {clouds[i].groupName} time elapsed{Time.time - clouds[i].timeOfLastCloud} freq : {clouds[i].CloudFrequency}");
             }
         }
     }

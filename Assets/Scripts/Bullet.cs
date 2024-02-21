@@ -7,6 +7,7 @@ public class Bullet : Projectile
     public bool bIsBeingGrabbed {get; private set;} = true;
     Rigidbody2D rb;
     [SerializeField] float rotationMinSpeed, rotationMaxSpeed;
+         [SerializeField] Sprite[] BulletSprites;
     float rotationSpeed;
     // Start is called before the first frame update
     protected override void Start()
@@ -14,6 +15,11 @@ public class Bullet : Projectile
         base.Start();
         rb = GetComponent<Rigidbody2D>();
         rotationSpeed = Random.Range(rotationMinSpeed, rotationMaxSpeed);
+        SetSprite();
+    }
+        void SetSprite(){
+        int index = Random.Range(0,BulletSprites.Length-1);
+        spriteRenderer.sprite = BulletSprites[index];
     }
 
     // Update is called once per frame

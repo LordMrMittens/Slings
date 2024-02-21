@@ -5,11 +5,15 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     bool canDisappear = false;
-    Renderer rend;
+    public Renderer rend {get; protected set;}
+    public SpriteRenderer spriteRenderer {get; protected set;}
     protected virtual void Start()
     {
         rend = gameObject.GetComponent<Renderer>();
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+
     }
+
 
     // Update is called once per frame
     protected virtual void Update()
