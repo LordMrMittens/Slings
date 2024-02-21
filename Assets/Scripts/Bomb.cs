@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Bomb : Projectile
 {
@@ -10,6 +11,9 @@ public class Bomb : Projectile
 
     [SerializeField] float flyAwaySpeedOffset = 10;
     [SerializeField] float flyAwayVerticalOffset = 5;
+    public UnityEvent OnExplode;
+    
+    public UnityEvent OnDisable;
     /// <summary>
     /// Start is called on the frame when a script is enabled just before
     /// any of the Update methods is called the first time.

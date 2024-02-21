@@ -101,6 +101,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   swaySpeed: 3
   swayDistanceInAngles: 40
+  maxOffset: 2
+  minOffset: -2
+  bomb: {fileID: 6542287216332868589}
 --- !u!50 &3878227832223990427
 Rigidbody2D:
   serializedVersion: 4
@@ -222,3 +225,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3442930722790267940, guid: 9f7b4d064514ec449944a1b5e1b8481f, type: 3}
   m_PrefabInstance: {fileID: 7444673177449129284}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6542287216332868589 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -4784488288454807895, guid: 9f7b4d064514ec449944a1b5e1b8481f, type: 3}
+  m_PrefabInstance: {fileID: 7444673177449129284}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e51e7fd89b96394ead6263a005c1e28, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
