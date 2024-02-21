@@ -37,6 +37,7 @@ public class Bomb : Projectile
     }
     public void Explode()
     {
+        OnExplode.Invoke();
         Destroy(gameObject);
     }
     public void Disable(Vector3 direction)
@@ -47,7 +48,7 @@ public class Bomb : Projectile
         rb.AddForce(direction, ForceMode2D.Impulse);
         bCanExplode = false;
         circleCollider.enabled = false;
-
+        OnDisable.Invoke();
         // launch toward the sky and edges of screen
     }
     private void OnTriggerEnter2D(Collider2D other) {

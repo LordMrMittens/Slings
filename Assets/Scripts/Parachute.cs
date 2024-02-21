@@ -21,13 +21,18 @@ public class Parachute : MonoBehaviour
     {
         Sway();
         Steer();
+        if (bomb == null)
+        {
+            Destroy(this);
+        }
     }
     void Sway(){
         float angle = Mathf.Sin(Time.time * (swaySpeed + offset)) * swayDistanceInAngles;
         transform.rotation = Quaternion.Euler(0, 0, angle);     
     }
     void DetachFromBomb(){
-        rb.gravityScale = -1;
+        rb.gravityScale = -2;
+        Destroy(this,3f);
     }
     void Steer(){
         if (transform.position.x < GameManager.instance.screenBounds.x +.5f)
