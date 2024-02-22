@@ -27,6 +27,7 @@ public class BombGenerator : MonoBehaviour
         GameObject fallingBomb = Instantiate(BombPrefab, spawnPoint, Quaternion.identity);
         Bomb bomb = fallingBomb.GetComponentInChildren<Bomb>();
         bomb.OnDisable.AddListener(GameManager.instance.scoringManager.AddScore);
+        bomb.OnExplode.AddListener(GameManager.instance.livesManager.LoseLife);
         timeOfLastBomb = Time.time; 
         }
 
