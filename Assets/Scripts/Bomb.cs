@@ -11,10 +11,12 @@ public class Bomb : Projectile
 
     [SerializeField] float flyAwaySpeedOffset = 10;
     [SerializeField] float flyAwayVerticalOffset = 5;
-    public UnityEvent OnExplode;
+    public class OnExplodeEvent : UnityEvent<GameObject> { }
+    public OnExplodeEvent OnExplode = new OnExplodeEvent();
     //add score value to this event when called
     public class OnDisableEvent : UnityEvent<int> { }
     public OnDisableEvent OnDisable = new OnDisableEvent();
+    public GameObject Target { get; set; }
 
     protected override void Start()
     {
@@ -35,8 +37,8 @@ public class Bomb : Projectile
     }
     public void Explode()
     {
-        OnExplode.Invoke();
-        Destroy(gameObject);
+        OnExplode.Invoke(Target);
+        Destroy(transform.parent.gameObject);
     }
     public void Disable(Vector3 direction)
     {

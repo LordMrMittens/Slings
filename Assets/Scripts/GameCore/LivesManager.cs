@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LivesManager
 {
-    GameObject[] lifeIcons;
+    public GameObject[] lifeIcons {get; private set;}
     const int maxLives = 5;
     int currentLives;
     public void SetupLives()
@@ -20,7 +20,7 @@ public class LivesManager
             life.SetActive(true);
         }
     }
-    public void LoseLife()
+    public void LoseLife(GameObject lifeIcon)
     {
         currentLives--;
         if (IsGameOver())
@@ -29,11 +29,20 @@ public class LivesManager
         }
         if(currentLives >= 0)
         {
-            lifeIcons[currentLives].SetActive(false);
+            lifeIcon.SetActive(false);
         }
     }
     public bool IsGameOver()
     {
         return currentLives <= 0;
+    }
+    public List<GameObject> GetActiveLifeIconTransforms(){
+        List<GameObject> icons = new List<GameObject>();
+        foreach (GameObject life in lifeIcons)
+        {
+            if (life.activeSelf){
+            icons.Add(life);}
+        }
+        return icons;
     }
 }

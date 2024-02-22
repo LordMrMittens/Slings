@@ -30,14 +30,44 @@ public class Parachute : MonoBehaviour
         rb.gravityScale = -2;
         Destroy(gameObject,3f);
     }
-    void Steer(){
-        if (transform.position.x < GameManager.instance.screenBounds.x +.5f)
+    void Steer()
+    {
+        if (transform.position.y > 1.5f)
         {
-            rb.AddForce(Vector2.left * 2, ForceMode2D.Force);
+            if (transform.position.x < GameManager.instance.screenBounds.x + .5f)
+            {
+                rb.AddForce(Vector2.left * 2, ForceMode2D.Force);
+            }
+            else if (transform.position.x > -GameManager.instance.screenBounds.x - .5f)
+            {
+                rb.AddForce(Vector2.right * 2, ForceMode2D.Force);
+            }
+        } else {
+            GameObject[] ActiveIcons = GameManager.instance.livesManager.GetActiveLifeIconTransforms().ToArray();
+            if (ActiveIcons.Length > 0)
+            {
+                GameObject nearestIcon = GetClosestIcon(ActiveIcons);
+                Vector2 direction = (nearestIcon.transform.position - transform.position).normalized;
+                direction.y = 0;
+                rb.AddForce(direction * .2f, ForceMode2D.Force);
+            }
         }
-        else if (transform.position.x > -GameManager.instance.screenBounds.x -.5f)
+    }
+
+    private GameObject GetClosestIcon(GameObject[] ActiveIcons)
+    {
+        GameObject nearestIcon = ActiveIcons[0];
+        float nearestDistance = Vector2.Distance(transform.position, nearestIcon.transform.position);
+        foreach (GameObject icon in ActiveIcons)
         {
-            rb.AddForce(Vector2.right * 2, ForceMode2D.Force);
+            float distance = Vector2.Distance(transform.position, icon.transform.position);
+            if (distance < nearestDistance)
+            {
+                nearestIcon = icon;
+                nearestDistance = distance;
+            }
         }
+        bomb.Target = nearestIcon;
+        return nearestIcon;
     }
 }
