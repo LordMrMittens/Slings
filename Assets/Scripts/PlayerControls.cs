@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour
 {
-    [SerializeField] GameObject slingShotPrefab;
+    [SerializeField] Slingshot slingShotPrefab;
     [SerializeField] Bullet projectilePrefab;
     Launcher launcher;
     void Start()
@@ -18,7 +18,7 @@ public class PlayerControls : MonoBehaviour
         if(Input.GetMouseButtonDown(0)){
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
                 if(mousePos.y < 0){
-                    launcher.CreateSlingShot(new Vector3(mousePos.x,mousePos.y,0),slingShotPrefab,projectilePrefab);
+                    launcher.ActivateSlingshot(new Vector3(mousePos.x,mousePos.y,0),slingShotPrefab,projectilePrefab);
                 }
         }
         if(Input.GetMouseButtonUp(0)){

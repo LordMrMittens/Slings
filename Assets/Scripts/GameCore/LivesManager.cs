@@ -5,7 +5,7 @@ using UnityEngine;
 public class LivesManager
 {
     public GameObject[] lifeIcons {get; private set;}
-    const int maxLives = 5;
+    const int maxLives = 4;
     int currentLives;
     public void SetupLives()
     {
