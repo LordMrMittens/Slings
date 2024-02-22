@@ -12,12 +12,10 @@ public class Bomb : Projectile
     [SerializeField] float flyAwaySpeedOffset = 10;
     [SerializeField] float flyAwayVerticalOffset = 5;
     public UnityEvent OnExplode;
-    
-    public UnityEvent OnDisable;
-    /// <summary>
-    /// Start is called on the frame when a script is enabled just before
-    /// any of the Update methods is called the first time.
-    /// </summary>
+    //add score value to this event when called
+    public class OnDisableEvent : UnityEvent<int> { }
+    public OnDisableEvent OnDisable = new OnDisableEvent();
+
     protected override void Start()
     {
         base.Start();
@@ -48,7 +46,7 @@ public class Bomb : Projectile
         rb.AddForce(direction, ForceMode2D.Impulse);
         bCanExplode = false;
         circleCollider.enabled = false;
-        OnDisable.Invoke();
+        OnDisable.Invoke(1);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

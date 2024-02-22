@@ -26,7 +26,7 @@ public class Parachute : MonoBehaviour
         float angle = Mathf.Sin(Time.time * (swaySpeed + offset)) * swayDistanceInAngles;
         transform.rotation = Quaternion.Euler(0, 0, angle);     
     }
-    void DetachFromBomb(){
+    void DetachFromBomb(int placeholder){
         rb.gravityScale = -2;
         Destroy(gameObject,3f);
     }

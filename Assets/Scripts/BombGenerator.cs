@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class BombGenerator : MonoBehaviour
 {
-    [SerializeField] GameObject TestObject;
+    [SerializeField] GameObject BombPrefab;
     
     //Move this to a controller class
     // Start is called before the first frame update
@@ -24,7 +24,9 @@ public class BombGenerator : MonoBehaviour
         {
         float randomX = UnityEngine.Random.Range(bombCreationBounds.x+0.5f, MathF.Abs(bombCreationBounds.x) -0.5f);
         Vector2 spawnPoint = new Vector2(randomX, MathF.Abs(bombCreationBounds.y-1)); //add offset so bombs are created off screen
-        Instantiate(TestObject, spawnPoint, Quaternion.identity);
+        GameObject fallingBomb = Instantiate(BombPrefab, spawnPoint, Quaternion.identity);
+        Bomb bomb = fallingBomb.GetComponentInChildren<Bomb>();
+        bomb.OnDisable.AddListener(GameManager.instance.scoringManager.AddScore);
         timeOfLastBomb = Time.time; 
         }
 
