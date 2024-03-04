@@ -18,6 +18,7 @@ public class Bomb : Projectile
     public OnDisableEvent OnDisable = new OnDisableEvent();
     public GameObject Target { get; set; }
     [SerializeField] GameObject explosionPrefab;
+    [SerializeField] Vector3 explosionOffset = new Vector3(0, .5f, 0);
 
     protected override void Start()
     {
@@ -39,7 +40,7 @@ public class Bomb : Projectile
     public void Explode()
     {
         OnExplode.Invoke(Target);
-        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(explosionPrefab, transform.position + explosionOffset, Quaternion.identity);
         Destroy(transform.parent.gameObject);
     }
     public void Disable(Vector3 direction)

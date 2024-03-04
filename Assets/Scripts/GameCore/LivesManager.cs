@@ -32,7 +32,7 @@ public class LivesManager
         }
         if(currentLives >= 0)
         {
-            GameObject.Instantiate(lifeExplosionPrefab, lifeIcon.transform.position, Quaternion.identity);
+            GameObject.Instantiate(lifeExplosionPrefab, lifeIcon.transform.position + new Vector3(0, .5f, 0), Quaternion.identity);
             lifeIcon.SetActive(false);
         }
     }
