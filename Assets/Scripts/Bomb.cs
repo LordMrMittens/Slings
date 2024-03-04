@@ -17,6 +17,7 @@ public class Bomb : Projectile
     public class OnDisableEvent : UnityEvent<int> { }
     public OnDisableEvent OnDisable = new OnDisableEvent();
     public GameObject Target { get; set; }
+    [SerializeField] GameObject explosionPrefab;
 
     protected override void Start()
     {
@@ -38,6 +39,7 @@ public class Bomb : Projectile
     public void Explode()
     {
         OnExplode.Invoke(Target);
+        GameObject explosion = Instantiate(explosionPrefab, transform.position, Quaternion.identity);
         Destroy(transform.parent.gameObject);
     }
     public void Disable(Vector3 direction)

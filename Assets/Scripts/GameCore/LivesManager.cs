@@ -7,9 +7,12 @@ public class LivesManager
     public GameObject[] lifeIcons {get; private set;}
     const int maxLives = 4;
     int currentLives;
-    public void SetupLives()
+    
+    GameObject lifeExplosionPrefab;
+    public void SetupLives(GameObject lifeExplosionPrefabs)
     {
         lifeIcons = GameObject.FindGameObjectsWithTag("Life");
+        lifeExplosionPrefab = lifeExplosionPrefabs;
         ResetLives();
     }
     public void ResetLives()
@@ -29,6 +32,7 @@ public class LivesManager
         }
         if(currentLives >= 0)
         {
+            GameObject.Instantiate(lifeExplosionPrefab, lifeIcon.transform.position, Quaternion.identity);
             lifeIcon.SetActive(false);
         }
     }

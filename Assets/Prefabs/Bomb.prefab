@@ -135,9 +135,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   flyAwaySpeedOffset: 10
   flyAwayVerticalOffset: 5
-  OnExplode:
-    m_PersistentCalls:
-      m_Calls: []
-  OnDisable:
-    m_PersistentCalls:
-      m_Calls: []
+  explosionPrefab: {fileID: 1878213965997618050, guid: 6ea5b16be8f941342b8ff0c38643609f, type: 3}
