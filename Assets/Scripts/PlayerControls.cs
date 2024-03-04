@@ -8,12 +8,13 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] Slingshot slingShotPrefab;
     [SerializeField] Bullet projectilePrefab;
     Launcher launcher;
+    public Touch touch;
     void Start()
     {
         launcher = GetComponent<Launcher>();
     }
-
-    void Update()
+ //move all to input handler that sends information here?
+    void Update() 
     {
         if(Input.GetMouseButtonDown(0)){
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
