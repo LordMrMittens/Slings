@@ -8,23 +8,23 @@ public class PlayerControls : MonoBehaviour
     [SerializeField] Slingshot slingShotPrefab;
     [SerializeField] Bullet projectilePrefab;
     Launcher launcher;
-    public Touch touch;
     void Start()
     {
         launcher = GetComponent<Launcher>();
     }
- //move all to input handler that sends information here?
-    void Update() 
+    //the below is done this way and not directily from the input handler in case shot modifiers are added in later iterations
+    public void PrepareLauncher(Vector3 position)
     {
-        if(Input.GetMouseButtonDown(0)){
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                if(mousePos.y < 0){
-                    launcher.ActivateSlingshot(new Vector3(mousePos.x,mousePos.y,0),slingShotPrefab,projectilePrefab);
-                }
-        }
-        if(Input.GetMouseButtonUp(0)){
-            launcher.Shoot();
-        }
+        launcher.ActivateSlingshot(new Vector3(position.x,position.y,0),slingShotPrefab,projectilePrefab);
+    }
+    public void DragAction(Vector3 position)
+    {
+        launcher.Drag(position);
+    }
+
+    public void ShootAction()
+    {
+        launcher.Shoot();
     }
     
 }

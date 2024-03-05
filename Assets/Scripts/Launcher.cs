@@ -20,20 +20,18 @@ public class Launcher : MonoBehaviour
             slingShot.DeactivateLineRenderers();
         }
     }
-    void Update()
+    public void Drag(Vector3 pos)
     {
-        if (Input.GetMouseButton(0)&& slingShot != null && projectile != null)
+        if(projectile == null || slingShot == null) return;
+        pos.z = 0;
+        projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, pos, 0.1f);
+        slingShot.UpdatePullingPosition(projectile.transform.position);
+        if (slingshotType == SlingshotType.Free)
         {
-            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            mousePos.z = 0;
-            projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, mousePos, 0.1f);
-            slingShot.UpdatePullingPosition(projectile.transform.position);
-            if(slingshotType == SlingshotType.Free)
-            {
-                slingShot.transform.up = mousePos - transform.position;
-            }
+            slingShot.transform.up = pos - transform.position;
         }
     }
+
     public void ActivateSlingshot(Vector3 position, Slingshot SlingShotPrefab, Bullet ProjectilePrefab)
     {
         if(slingshotType == SlingshotType.Free)

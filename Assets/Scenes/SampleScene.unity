@@ -494,6 +494,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc298358862134346894baaa2b015872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  lifeExplosionPrefab: {fileID: 2077965326976573985, guid: ebd873925a685674f85e856d4e8112ee, type: 3}
 --- !u!4 &379652491
 Transform:
   m_ObjectHideFlags: 0
@@ -1442,6 +1443,7 @@ GameObject:
   - component: {fileID: 1646206790}
   - component: {fileID: 1646206789}
   - component: {fileID: 1646206791}
+  - component: {fileID: 1646206792}
   m_Layer: 0
   m_Name: PlayerControls
   m_TagString: Untagged
@@ -1491,6 +1493,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forceOffset: 10
+--- !u!114 &1646206792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1646206788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2662e90a4727b4d448be1b459bed3177, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1772915360
 GameObject:
   m_ObjectHideFlags: 0
