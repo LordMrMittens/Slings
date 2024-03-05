@@ -16,10 +16,17 @@ public class InputHandler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RegisterInputs();
+        RegisterGameplayInputs();
+        RegisterOtherInputs();
     }
-
-    private void RegisterInputs()
+    private void RegisterOtherInputs()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            GameManager.instance.TogglePause();
+        }
+    }
+    private void RegisterGameplayInputs()
     {
         //for touch input
         if (Input.touchCount > 0)

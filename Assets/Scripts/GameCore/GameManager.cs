@@ -16,12 +16,16 @@ public class GameManager : MonoBehaviour
         livesManager.SetupLives(lifeExplosionPrefab);
         scoringManager = new ScoringManager();
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
-        screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);//move this to a controller class
+        screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);
+        if(Time.timeScale == 0)
+        {
+            Time.timeScale = 1;
+        }
+        //move this to a controller class
     }
-
-    // Update is called once per frame
-    void Update()
+    public void TogglePause()
     {
-        
+        Debug.Log("Pause");
+        Time.timeScale = Time.timeScale == 0 ? 1 : 0;
     }
 }
