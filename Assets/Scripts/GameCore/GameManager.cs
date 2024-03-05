@@ -12,11 +12,11 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         instance = this;
+        screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);
         livesManager = new LivesManager();
         livesManager.SetupLives(lifeExplosionPrefab);
         scoringManager = new ScoringManager();
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
-        screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);
         if(Time.timeScale == 0)
         {
             Time.timeScale = 1;

@@ -7,21 +7,42 @@ public class LivesManager
     public GameObject[] lifeIcons {get; private set;}
     const int maxLives = 4;
     int currentLives;
+    GameObject[] lifePositions = new GameObject[maxLives];
     
     GameObject lifeExplosionPrefab;
     public void SetupLives(GameObject lifeExplosionPrefabs)
     {
         lifeIcons = GameObject.FindGameObjectsWithTag("Life");
         lifeExplosionPrefab = lifeExplosionPrefabs;
-        ResetLives();
+        SpaceOutLives();
+        
     }
     public void ResetLives()
     {
         currentLives = maxLives;
+        int positionIndex = 0;
         foreach (GameObject life in lifeIcons)
         {
             life.SetActive(true);
+            life.transform.position = lifePositions[positionIndex].transform.position;
+            positionIndex++; 
         }
+    }
+    public void SpaceOutLives()
+    {
+        float lifeSpacing = (GameManager.instance.screenBounds.x * 2) / maxLives+.3f;
+        Debug.Log($"Game Manager screen bounds: {GameManager.instance.screenBounds.x} * 2 = {GameManager.instance.screenBounds.x * 2} / {maxLives} = {lifeSpacing}");
+        float offset = 0;
+        for (int i = 0; i < maxLives; i++)
+        {
+            lifePositions[i] = new GameObject("LifePosition" + i);
+            if (i > 1)
+            {
+                offset = lifeSpacing;
+            }
+            lifePositions[i].transform.position = new Vector3(((lifeSpacing*i)+offset)-(lifeSpacing*2), lifeIcons[i].transform.position.y, 0);
+        }
+        ResetLives();
     }
     public void LoseLife(GameObject lifeIcon)
     {

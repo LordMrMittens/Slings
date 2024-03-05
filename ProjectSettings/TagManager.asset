@@ -7,6 +7,7 @@ TagManager:
   - Projectile
   - Life
   - SlingShot
+  - LifePosition
   layers:
   - Default
   - TransparentFX
