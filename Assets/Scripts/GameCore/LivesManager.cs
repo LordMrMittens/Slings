@@ -31,7 +31,6 @@ public class LivesManager
     public void SpaceOutLives()
     {
         float lifeSpacing = (GameManager.instance.screenBounds.x * 2) / maxLives+.3f;
-        Debug.Log($"Game Manager screen bounds: {GameManager.instance.screenBounds.x} * 2 = {GameManager.instance.screenBounds.x * 2} / {maxLives} = {lifeSpacing}");
         float offset = 0;
         for (int i = 0; i < maxLives; i++)
         {
