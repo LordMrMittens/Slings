@@ -38,11 +38,11 @@ public class InputHandler : MonoBehaviour
             }
             if (touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
             {
-                playerControls.DragAction(HandleInput(touch.position));
+                playerControls.HandleDragAction(HandleInput(touch.position));
             }
             if (touch.phase == TouchPhase.Ended)
             {
-                playerControls.ShootAction();
+                playerControls.HandleShootAction();
             }
         }
         //for mouse input
@@ -51,11 +51,11 @@ public class InputHandler : MonoBehaviour
             ValidatePosition(HandleInput(Input.mousePosition));
         }
         if(Input.GetMouseButton(0)){
-            playerControls.DragAction(HandleInput(Input.mousePosition));
+            playerControls.HandleDragAction(HandleInput(Input.mousePosition));
         }
         if (Input.GetMouseButtonUp(0))
         {
-            playerControls.ShootAction();
+            playerControls.HandleShootAction();
         }
     }
 

@@ -9,9 +9,14 @@ public class GameManager : MonoBehaviour
     public ScoringManager scoringManager;
     public LivesManager livesManager;
     [SerializeField] GameObject lifeExplosionPrefab;
+    public bool isPaused {get; private set;} = false;
     void Start()
     {
         instance = this;
+        Reset();
+        //move this to a controller class
+    }
+    public void Reset() {
         screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);
         livesManager = new LivesManager();
         livesManager.SetupLives(lifeExplosionPrefab);
@@ -21,11 +26,10 @@ public class GameManager : MonoBehaviour
         {
             Time.timeScale = 1;
         }
-        //move this to a controller class
     }
     public void TogglePause()
     {
-        Debug.Log("Pause");
         Time.timeScale = Time.timeScale == 0 ? 1 : 0;
+        isPaused = Time.timeScale == 0;
     }
 }

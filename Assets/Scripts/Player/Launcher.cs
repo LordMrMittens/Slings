@@ -50,12 +50,13 @@ public class Launcher : MonoBehaviour
         projectile = Instantiate(ProjectilePrefab, position, Quaternion.identity);
         slingShot.ActivateLineRenderers();
     }
-    public void Shoot(){
-        if(slingShot == null || projectile == null) return;
+    public bool Shoot(){
+        if(slingShot == null || projectile == null) return false;
         Vector3 force = (slingShot.ShootingAxis.position - projectile.transform.position ) * forceOffset;
         projectile.ShootBullet(force);
         slingShot.DeactivateLineRenderers();
         DestroySlingShot();
+        return true;
     }
     void DestroySlingShot()
     {
