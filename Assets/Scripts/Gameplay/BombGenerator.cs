@@ -10,7 +10,7 @@ public class BombGenerator : MonoBehaviour
     //Move this to a controller class
     // Start is called before the first frame update
     Vector2 bombCreationBounds;
-    float creationFrequency = 1;
+    public float creationFrequency{get; private set;} = 1;
     float timeOfLastBomb;
     void Start()
     {
@@ -33,5 +33,9 @@ public class BombGenerator : MonoBehaviour
 
         //create bombs
         //increase speed of bombs with time? possibly done in a separate class
+    }
+    public void SetCreationFrequency(float frequency)
+    {
+        creationFrequency = frequency;
     }
 }

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public  Vector3 screenBounds {get; private set;}
     public ScoringManager scoringManager;
     public LivesManager livesManager;
+    DifficultyHandler difficultyHandler;
     [SerializeField] GameObject lifeExplosionPrefab;
     public bool isPaused {get; private set;} = false;
     void Start()
@@ -22,6 +23,9 @@ public class GameManager : MonoBehaviour
         livesManager.SetupLives(lifeExplosionPrefab);
         scoringManager = new ScoringManager();
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
+        difficultyHandler = new DifficultyHandler();
+        difficultyHandler.SetDifficultyHandler(FindObjectOfType<BombGenerator>(), scoringManager);
+
         if(Time.timeScale == 0)
         {
             Time.timeScale = 1;
