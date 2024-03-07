@@ -23,7 +23,7 @@ public class InputHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            GameManager.instance.TogglePause();
+            GameManager.instance.ToggleTimeStop();
         }
     }
     private void RegisterGameplayInputs()

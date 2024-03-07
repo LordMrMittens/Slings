@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class LivesManager
 {
@@ -8,8 +9,8 @@ public class LivesManager
     const int maxLives = 4;
     int currentLives;
     GameObject[] lifePositions = new GameObject[maxLives];
-    
     GameObject lifeExplosionPrefab;
+    public UnityEvent OnGameOver = new UnityEvent();
     public void SetupLives(GameObject lifeExplosionPrefabs)
     {
         lifeIcons = GameObject.FindGameObjectsWithTag("Life");
@@ -49,6 +50,7 @@ public class LivesManager
         if (IsGameOver())
         {
             Debug.Log("Game Over");
+            OnGameOver.Invoke();
         }
         if(currentLives >= 0)
         {
