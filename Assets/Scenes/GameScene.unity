@@ -881,6 +881,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294b65bc65f383647be6a5cee81e837c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 1601173633}
+  gameOverMenu: {fileID: 1959721740}
+  hiScore: {fileID: 1314545147}
+  playerScore: {fileID: 896331417}
+  newHiScore: {fileID: 1210576415}
 --- !u!114 &228964748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4216,7 +4221,7 @@ GameObject:
   - component: {fileID: 1375993696}
   - component: {fileID: 1375993695}
   m_Layer: 5
-  m_Name: Options
+  m_Name: Retry
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4294,6 +4299,18 @@ MonoBehaviour:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 228964748}
+        m_TargetAssemblyTypeName: SceneLoader, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
