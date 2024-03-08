@@ -137,4 +137,4 @@ MonoBehaviour:
   flyAwayVerticalOffset: 5
   explosionPrefab: {fileID: 1878213965997618050, guid: 6ea5b16be8f941342b8ff0c38643609f, type: 3}
   explosionOffset: {x: 0, y: 0.5, z: 0}
-  floatingNumberPrefab: {fileID: 2039540647271887185, guid: e5625b6d657287f4eae85130f5b9daa1, type: 3}
+  floatingNumberPrefab: {fileID: -4827108728670213806, guid: e5625b6d657287f4eae85130f5b9daa1, type: 3}

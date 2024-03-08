@@ -13,15 +13,12 @@ public class Bomb : Projectile
     [SerializeField] float flyAwayVerticalOffset = 5;
     public class OnExplodeEvent : UnityEvent<GameObject> { }
     public OnExplodeEvent OnExplode = new OnExplodeEvent();
-    //add score value to this event when called
     public class OnDisableEvent : UnityEvent<int> { }
     public OnDisableEvent OnDisable = new OnDisableEvent();
     public GameObject Target { get; set; }
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] Vector3 explosionOffset = new Vector3(0, .5f, 0);
-    [SerializeField] GameObject floatingNumberPrefab;
-    TextMesh floatingNumber;
-
+    [SerializeField] DisplayNumber floatingNumberPrefab;
 
     protected override void Start()
     {
@@ -57,8 +54,8 @@ public class Bomb : Projectile
         rb.AddForce(flyDirection, ForceMode2D.Impulse);
         bCanExplode = false;
         circleCollider.enabled = false;
-        GameObject floatingNumber = Instantiate(floatingNumberPrefab, transform.position+explosionOffset, Quaternion.identity);
-        floatingNumber.GetComponent<TextMesh>().text = "+" + value.ToString();
+        DisplayNumber displayNumber = Instantiate(floatingNumberPrefab, transform.position+explosionOffset, Quaternion.identity);
+        displayNumber.SetupText(value);
         OnDisable.Invoke(value);
     }
 }

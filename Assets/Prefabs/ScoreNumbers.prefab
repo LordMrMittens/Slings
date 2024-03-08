@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7599244009247484947}
   - component: {fileID: 519017056372196365}
   - component: {fileID: 854911184293208813}
+  - component: {fileID: -4827108728670213806}
   m_Layer: 0
   m_Name: ScoreNumbers
   m_TagString: Untagged
@@ -90,10 +91,32 @@ TextMesh:
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 40
+  m_FontSize: 30
   m_FontStyle: 1
   m_RichText: 0
   m_Font: {fileID: 12800000, guid: e3265ab4bf004d28a9537516768c1c75, type: 3}
   m_Color:
     serializedVersion: 2
-    rgba: 4278220799
+    rgba: 4294967295
+--- !u!114 &-4827108728670213806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039540647271887185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: da4d7b551dfc22943ab7181a2f07baea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMesh: {fileID: 854911184293208813}
+  initialTextColor:
+  - {r: 0.008435071, g: 0.5377358, b: 0, a: 1}
+  - {r: 0, g: 0.07388735, b: 1, a: 1}
+  - {r: 1, g: 0.8941177, b: 0, a: 1}
+  - {r: 1, g: 0, b: 0.017280579, a: 1}
+  endTextColor: {r: 0, g: 0, b: 0, a: 1}
+  timeToLive: 3
+  speed: 0.4
+  colourChangeSpeed: 1
