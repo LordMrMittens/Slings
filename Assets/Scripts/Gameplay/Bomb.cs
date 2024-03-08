@@ -45,30 +45,14 @@ public class Bomb : Projectile
     }
     public void Disable(Vector3 direction, int points =0)
     {
-        
+        Vector3 flyDirection = direction * flyAwaySpeedOffset;
+        flyDirection.y += flyAwayVerticalOffset;
         transform.parent = null;
         Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;
-        rb.AddForce(direction, ForceMode2D.Impulse);
+        rb.AddForce(flyDirection, ForceMode2D.Impulse);
         bCanExplode = false;
         circleCollider.enabled = false;
         OnDisable.Invoke(1+points);
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        HandleBulletCollision(other);
-    }
-    private void OnTriggerStay2D(Collider2D other) {
-        HandleBulletCollision(other);
-    }
-    private void HandleBulletCollision(Collider2D other)
-    {
-        if (other.gameObject.tag == "Projectile")
-        {
-            if (other.gameObject.GetComponent<Bullet>().bIsBeingGrabbed) return;
-            Vector3 direction = (transform.position - other.transform.position).normalized * flyAwaySpeedOffset;
-            direction.y += flyAwayVerticalOffset;
-            Disable(direction);
-        }
     }
 }

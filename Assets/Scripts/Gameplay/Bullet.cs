@@ -37,4 +37,24 @@ public class Bullet : Projectile
         rb.gravityScale = 1;
         rb.AddForce(direction, ForceMode2D.Impulse);
         }
+
+    private void HandleBulletCollision(Collider2D other)
+    {
+        Bomb bomb = other.GetComponent<Bomb>();
+        if (bomb)
+        {
+            if (bIsBeingGrabbed) return;
+            Vector3 direction = (other.transform.position - transform.position).normalized;
+            bomb.Disable(direction, timesHit);
+            timesHit++;
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        HandleBulletCollision(other);
+    }
+
+    private void OnTriggerStay2D(Collider2D other) {
+        HandleBulletCollision(other);
+    }
 }
