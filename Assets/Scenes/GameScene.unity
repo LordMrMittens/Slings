@@ -3400,7 +3400,7 @@ GameObject:
   - component: {fileID: 959396874}
   - component: {fileID: 959396875}
   m_Layer: 5
-  m_Name: Slider
+  m_Name: PowerSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
