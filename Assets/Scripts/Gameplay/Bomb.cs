@@ -19,6 +19,9 @@ public class Bomb : Projectile
     public GameObject Target { get; set; }
     [SerializeField] GameObject explosionPrefab;
     [SerializeField] Vector3 explosionOffset = new Vector3(0, .5f, 0);
+    [SerializeField] GameObject floatingNumberPrefab;
+    TextMesh floatingNumber;
+
 
     protected override void Start()
     {
@@ -45,6 +48,7 @@ public class Bomb : Projectile
     }
     public void Disable(Vector3 direction, int points =0)
     {
+        int value = 1 + points;
         Vector3 flyDirection = direction * flyAwaySpeedOffset;
         flyDirection.y += flyAwayVerticalOffset;
         transform.parent = null;
@@ -53,6 +57,8 @@ public class Bomb : Projectile
         rb.AddForce(flyDirection, ForceMode2D.Impulse);
         bCanExplode = false;
         circleCollider.enabled = false;
-        OnDisable.Invoke(1+points);
+        GameObject floatingNumber = Instantiate(floatingNumberPrefab, transform.position+explosionOffset, Quaternion.identity);
+        floatingNumber.GetComponent<TextMesh>().text = "+" + value.ToString();
+        OnDisable.Invoke(value);
     }
 }
