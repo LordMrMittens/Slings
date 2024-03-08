@@ -43,15 +43,16 @@ public class Bomb : Projectile
         GameObject explosion = Instantiate(explosionPrefab, transform.position + explosionOffset, Quaternion.identity);
         Destroy(transform.parent.gameObject);
     }
-    public void Disable(Vector3 direction)
+    public void Disable(Vector3 direction, int points =0)
     {
+        
         transform.parent = null;
         Rigidbody2D rb = gameObject.AddComponent<Rigidbody2D>();
         rb.gravityScale = 0;
         rb.AddForce(direction, ForceMode2D.Impulse);
         bCanExplode = false;
         circleCollider.enabled = false;
-        OnDisable.Invoke(1);
+        OnDisable.Invoke(1+points);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {

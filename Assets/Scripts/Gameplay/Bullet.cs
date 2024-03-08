@@ -5,9 +5,10 @@ using UnityEngine;
 public class Bullet : Projectile
 {
     public bool bIsBeingGrabbed {get; private set;} = true;
+    public int timesHit {get; private set ;} = 0;
     Rigidbody2D rb;
     [SerializeField] float rotationMinSpeed, rotationMaxSpeed;
-         [SerializeField] Sprite[] BulletSprites;
+    [SerializeField] Sprite[] BulletSprites;
     float rotationSpeed;
     // Start is called before the first frame update
     protected override void Start()
