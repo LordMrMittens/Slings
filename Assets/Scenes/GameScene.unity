@@ -5483,7 +5483,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slingShotPrefab: {fileID: -6166734802591061693, guid: 5d5a1c19c88f61247add9f66b1532ac6, type: 3}
   projectilePrefab: {fileID: 8542944374733740501, guid: 3940d359e808f464d8a16ba8526737fa, type: 3}
-  timeBetweenShots: 0.25
+  defaultTimeBetweenShots: 25
 --- !u!4 &1646206790
 Transform:
   m_ObjectHideFlags: 0
@@ -6209,8 +6209,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpUI: {fileID: 228964749}
-  powerupBuildupRate: 1
-  powerupduration: 4
+  powerupBuildupRate: 5
+  killsNecesaryForIncrease: 2
+  powerupDuration: 3
   powerupMaxIncrease: 1.1
 --- !u!4 &1932675414
 Transform:
