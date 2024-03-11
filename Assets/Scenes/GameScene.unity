@@ -6212,7 +6212,7 @@ MonoBehaviour:
   powerupBuildupRate: 3
   killsNecesaryForIncrease: 1
   powerupDuration: 3
-  powerupMaxIncrease: 1.1
+  powerupMaxIncrease: 1.3
 --- !u!4 &1932675414
 Transform:
   m_ObjectHideFlags: 0

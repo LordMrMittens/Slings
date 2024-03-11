@@ -12,6 +12,7 @@ public class PowerUpHandler : MonoBehaviour
     [SerializeField] int killsNecesaryForIncrease =3; 
     int killCount = 0;
     [SerializeField] float powerupDuration =4;
+    float thisPowerupDuration =0;
     float powerupCounter=0;
     [SerializeField] float powerupMaxIncrease = 1.10f; 
     bool isActive = false;
@@ -26,6 +27,7 @@ public class PowerUpHandler : MonoBehaviour
         {
             //activate powerup
             isActive = true;
+            thisPowerupDuration = powerupDuration * (currentPowerupBuildup / maxPowerupBuildup);
             powerUpUI.ActivatePowerUp();
             playerControls.SetTimeBetweenShots(0);
             Time.timeScale = 0;
@@ -36,7 +38,7 @@ public class PowerUpHandler : MonoBehaviour
         if (isActive)
         {
            powerupCounter += Time.unscaledDeltaTime;
-           if(powerupCounter >= powerupDuration)
+           if(powerupCounter >= thisPowerupDuration)
            {
             Time.timeScale = 1;
             powerupCounter = 0;
@@ -51,10 +53,20 @@ public class PowerUpHandler : MonoBehaviour
     public void AddPowerupBuildup(int value)
     {
         killCount = value > 4? killCount + value : killCount +1;
-            if(killCount % killsNecesaryForIncrease == 0)
+        
+            if(killCount >= killsNecesaryForIncrease)
             {
+                while(killCount > 0)
+                {
+                killCount -= killsNecesaryForIncrease;
                 currentPowerupBuildup += powerupBuildupRate;
+                if(currentPowerupBuildup >= maxPowerupBuildup)
+                {
+                    currentPowerupBuildup = maxPowerupBuildup;
+                }
                 powerUpUI.UpdatePowerUpUI(currentPowerupBuildup, maxPowerupBuildup);
+                }
+                killCount = 0;
             }
         
     }
