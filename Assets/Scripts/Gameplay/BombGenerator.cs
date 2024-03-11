@@ -6,9 +6,6 @@ using UnityEngine;
 public class BombGenerator : MonoBehaviour
 {
     [SerializeField] GameObject BombPrefab;
-    
-    //Move this to a controller class
-    // Start is called before the first frame update
     Vector2 bombCreationBounds;
     public float creationFrequency{get; private set;} = 1;
     float timeOfLastBomb;
@@ -28,6 +25,7 @@ public class BombGenerator : MonoBehaviour
         Bomb bomb = fallingBomb.GetComponentInChildren<Bomb>();
         bomb.OnDisable.AddListener(GameManager.instance.scoringManager.AddScore);
         bomb.OnExplode.AddListener(GameManager.instance.livesManager.LoseLife);
+        bomb.OnDisable.AddListener(GameManager.instance.powerUpHandler.AddPowerupBuildup);
         timeOfLastBomb = Time.time; 
         }
 

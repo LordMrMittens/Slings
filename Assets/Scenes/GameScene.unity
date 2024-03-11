@@ -784,7 +784,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 115227645}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1932675413}
+        m_TargetAssemblyTypeName: PowerUpHandler, Assembly-CSharp
+        m_MethodName: ActivatePowerUp
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &115227645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1133,7 @@ GameObject:
   - component: {fileID: 228964745}
   - component: {fileID: 228964747}
   - component: {fileID: 228964748}
+  - component: {fileID: 228964749}
   m_Layer: 0
   m_Name: UIManager
   m_TagString: Untagged
@@ -1185,6 +1198,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e4ada486a325b646bdbc2dcdd65f838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &228964749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 228964744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6796102b253bf2b48af0404bf7fe8c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  <powerUpSlider>k__BackingField: {fileID: 959396875}
 --- !u!1 &260836408
 GameObject:
   m_ObjectHideFlags: 0
@@ -6153,6 +6179,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1932675412
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1932675414}
+  - component: {fileID: 1932675413}
+  m_Layer: 0
+  m_Name: PowerUpHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1932675413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932675412}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed60f7a2d1b7aab469dc82a2f6bf53e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerUpUI: {fileID: 228964749}
+  powerupBuildupRate: 1
+  powerupduration: 4
+  powerupMaxIncrease: 1.1
+--- !u!4 &1932675414
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932675412}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -152.31554, y: 963.241, z: -14.739464}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1959721740
 GameObject:
   m_ObjectHideFlags: 0
@@ -6579,3 +6653,4 @@ SceneRoots:
   - {fileID: 1806319804}
   - {fileID: 228964746}
   - {fileID: 1367027637}
+  - {fileID: 1932675414}

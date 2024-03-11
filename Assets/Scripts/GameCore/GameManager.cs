@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public LivesManager livesManager;
     UIControls uiControls;
     DifficultyHandler difficultyHandler;
+    public PowerUpHandler powerUpHandler {get; private set;}
     [SerializeField] GameObject lifeExplosionPrefab;
     public bool isPaused {get; private set;} = false;
     void Start()
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
         difficultyHandler = new DifficultyHandler();
         difficultyHandler.SetDifficultyHandler(FindObjectOfType<BombGenerator>(), scoringManager);
+        powerUpHandler = FindObjectOfType<PowerUpHandler>();
         uiControls = FindObjectOfType<UIControls>();
 
         if(Time.timeScale == 0)
