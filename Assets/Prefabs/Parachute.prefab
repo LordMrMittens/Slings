@@ -103,6 +103,9 @@ MonoBehaviour:
   swayDistanceInAngles: 40
   maxOffset: 2
   minOffset: -2
+  maxSteerHeight: 1.5
+  minSteerHeight: -2
+  steerSpeed: 0.1
   bomb: {fileID: 6542287216332868589}
 --- !u!50 &3878227832223990427
 Rigidbody2D:

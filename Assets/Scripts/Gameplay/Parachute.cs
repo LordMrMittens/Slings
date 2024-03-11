@@ -7,6 +7,9 @@ public class Parachute : MonoBehaviour
     [SerializeField] float swaySpeed = 3;
     [SerializeField] float swayDistanceInAngles = 40;
     [SerializeField] float maxOffset =2, minOffset = -2;
+    [SerializeField] float maxSteerHeight = .5f, minSteerHeight = -1.5f;
+    float steerHeight;
+    [SerializeField] float steerSpeed = 1;
     [SerializeField] Bomb bomb;
     Rigidbody2D rb;
     float offset;
@@ -16,6 +19,7 @@ public class Parachute : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         offset = Random.Range(minOffset, maxOffset);
         bomb.OnDisable.AddListener(DetachFromBomb);
+        steerHeight = Random.Range(minSteerHeight, maxSteerHeight);
     }
     void Update()
     {
@@ -44,12 +48,12 @@ public class Parachute : MonoBehaviour
             }
         } else {
             GameObject[] ActiveIcons = GameManager.instance.livesManager.GetActiveLifeIconTransforms().ToArray();
-            if (ActiveIcons.Length > 0)
+            if (ActiveIcons.Length > 0 && transform.position.y < steerHeight)
             {
                 GameObject nearestIcon = GetClosestIcon(ActiveIcons);
                 Vector2 direction = (nearestIcon.transform.position - transform.position).normalized;
                 direction.y = 0;
-                rb.AddForce(direction * .2f, ForceMode2D.Force);
+                rb.AddForce(direction * steerSpeed, ForceMode2D.Force);
             }
         }
     }
