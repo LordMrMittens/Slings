@@ -39,6 +39,7 @@ public class PowerUpHandler : MonoBehaviour
            if(powerupCounter >= powerupDuration)
            {
             Time.timeScale = 1;
+            powerupCounter = 0;
             currentPowerupBuildup = 0;
             maxPowerupBuildup *= powerupMaxIncrease;
             powerUpUI.UpdatePowerUpUI(currentPowerupBuildup, maxPowerupBuildup);

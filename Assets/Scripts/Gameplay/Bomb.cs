@@ -45,6 +45,7 @@ public class Bomb : Projectile
     }
     public void Disable(Vector3 direction, int points =0)
     {
+        if (!bCanExplode) return;
         int value = 1 + points;
         Vector3 flyDirection = direction * flyAwaySpeedOffset;
         flyDirection.y += flyAwayVerticalOffset;
