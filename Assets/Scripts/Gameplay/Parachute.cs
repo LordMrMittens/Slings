@@ -74,4 +74,7 @@ public class Parachute : MonoBehaviour
         bomb.Target = nearestIcon;
         return nearestIcon;
     }
+    void AddMass(float massToAdd){
+        rb.mass += massToAdd;
+    }
 }
