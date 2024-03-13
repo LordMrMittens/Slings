@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
     public PowerUpHandler powerUpHandler {get; private set;}
     [SerializeField] GameObject lifeExplosionPrefab;
     public bool isPaused {get; private set;} = false;
+
+    //handle application lost focus on mobile
     void Start()
     {
         instance = this;
