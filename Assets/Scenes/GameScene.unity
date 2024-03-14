@@ -1183,6 +1183,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1601173633}
   gameOverMenu: {fileID: 1959721740}
+  GamePanel: {fileID: 0}
   hiScore: {fileID: 1314545147}
   playerScore: {fileID: 896331417}
   newHiScore: {fileID: 1210576415}
@@ -6212,7 +6213,8 @@ MonoBehaviour:
   powerupBuildupRate: 3
   killsNecesaryForIncrease: 1
   powerupDuration: 3
-  powerupMaxIncrease: 1.3
+  powerupMaxIncrease: 2
+  KillMultiplierBonusLimit: 7
 --- !u!4 &1932675414
 Transform:
   m_ObjectHideFlags: 0
