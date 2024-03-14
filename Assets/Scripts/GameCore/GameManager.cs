@@ -48,4 +48,5 @@ public class GameManager : MonoBehaviour
         ToggleTimeStop();
         uiControls.ActivateGameOverMenu(scoringManager.score);
     }
+
 }

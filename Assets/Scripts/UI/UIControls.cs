@@ -30,4 +30,25 @@ public class UIControls : MonoBehaviour
         newHiScore.SetActive(false);
         gameOverMenu.SetActive(false);
     }
+    public void ForceFocusPause(){
+        if(!GameManager.instance.isPaused)
+        {
+            TogglePause();
+            pauseMenu.SetActive(true);
+        }
+    }
+    //the below handles the game pausing when the app loses focus
+    void OnApplicationFocus(bool focusStatus) {
+        if(!focusStatus)
+        {
+            ForceFocusPause();
+        }
+    }
+        void OnApplicationPause(bool pauseStatus)
+    {
+        if(pauseStatus)
+        {
+            ForceFocusPause();
+        }
+    }
 }
