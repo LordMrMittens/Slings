@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+
+
+public class GameManager : Singleton<GameManager>
 {
-    public static GameManager instance;
     public  Vector3 screenBounds {get; private set;}
     public ScoringManager scoringManager;
     public LivesManager livesManager;
@@ -17,11 +19,21 @@ public class GameManager : MonoBehaviour
     //handle application lost focus on mobile
     void Start()
     {
-        instance = this;
-        Reset();
+        ResetGameManager(0);
         //move this to a controller class
     }
-    public void Reset() {
+    public void ResetGameManager(int sceneIndex){
+         (sceneIndex == 0 ? (System.Action)MainMenuReset : GameSceneReset)();
+    }
+    public void MainMenuReset()
+    {
+        scoringManager = null;
+        livesManager = null;
+        difficultyHandler = null;
+        powerUpHandler = null;
+        uiControls = null;
+    }
+    public void GameSceneReset() {
         screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);
         livesManager = new LivesManager();
         livesManager.SetupLives(lifeExplosionPrefab);
@@ -32,7 +44,7 @@ public class GameManager : MonoBehaviour
         difficultyHandler.SetDifficultyHandler(FindObjectOfType<BombGenerator>(), scoringManager);
         powerUpHandler = FindObjectOfType<PowerUpHandler>();
         uiControls = FindObjectOfType<UIControls>();
-
+        isPaused = false;
         if(Time.timeScale == 0)
         {
             Time.timeScale = 1;
@@ -48,5 +60,4 @@ public class GameManager : MonoBehaviour
         ToggleTimeStop();
         uiControls.ActivateGameOverMenu(scoringManager.score);
     }
-
 }

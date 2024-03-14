@@ -5,9 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    void Awake() {
+        SceneManager.sceneLoaded += OnSceneHasLoaded;
+    }
     public void LoadScene(int sceneIndex)
     {
-        SceneManager.LoadScene(sceneIndex);
+        SceneManager.LoadSceneAsync(sceneIndex);
     }
-
+    void OnSceneHasLoaded(Scene scene, LoadSceneMode mode)
+    {
+        GameManager.instance.ResetGameManager(scene.buildIndex);
+    }
 }
