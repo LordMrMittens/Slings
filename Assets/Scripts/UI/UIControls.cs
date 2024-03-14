@@ -8,6 +8,7 @@ public class UIControls : MonoBehaviour
 {
     [field : SerializeField] public GameObject pauseMenu;
     [field : SerializeField] public GameObject gameOverMenu;
+    [field : SerializeField] public GameObject GamePanel;
     [SerializeField] TMP_Text hiScore;
     [SerializeField] TMP_Text playerScore;
     [SerializeField] GameObject newHiScore;
@@ -19,6 +20,7 @@ public class UIControls : MonoBehaviour
     public void ActivateGameOverMenu(int score)
     {
         gameOverMenu.SetActive(true);
+        GamePanel.SetActive(false);
         playerScore.text = score.ToString();
 
         //get hi score
