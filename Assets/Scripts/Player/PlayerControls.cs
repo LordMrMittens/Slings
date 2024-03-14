@@ -22,7 +22,6 @@ public class PlayerControls : MonoBehaviour
     //the below is done this way and not directily from the input handler in case shot modifiers are added in later iterations
     public void PrepareLauncher(Vector3 position)
     {
-        Debug.Log($"isPaused: {GameManager.instance.isPaused},Time:{Time.time} ,timeSinceLastShot: {timeSinceLastShot}, timeBetweenShots: {timeBetweenShots}");
         if (GameManager.instance.isPaused || Time.time - timeSinceLastShot < timeBetweenShots) return;
         launcher.ActivateSlingshot(new Vector3(position.x,position.y,0),slingShotPrefab,projectilePrefab);
     }
