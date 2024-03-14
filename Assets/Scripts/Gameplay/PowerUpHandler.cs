@@ -14,7 +14,11 @@ public class PowerUpHandler : MonoBehaviour
     [SerializeField] float powerupDuration =4;
     float thisPowerupDuration =0;
     float powerupCounter=0;
-    [SerializeField] float powerupMaxIncrease = 1.10f; 
+    [SerializeField] float powerupMaxIncrease = 1.10f;
+    //the below is the number of kills needed to increase the powerup buildup 
+    //i.e if set to 3, then if the player kills over 3 bombs with one shot the powerup buildup will increase by the number of bombs killed instead of 1 
+    //for each subsequent kill
+    [SerializeField] int KillMultiplierBonusLimit =7;
     bool isActive = false;
 
     private void Start() {
@@ -52,7 +56,7 @@ public class PowerUpHandler : MonoBehaviour
     }
     public void AddPowerupBuildup(int value)
     {
-        killCount = value > 4? killCount + value : killCount +1;
+        killCount = value > KillMultiplierBonusLimit ? killCount + value : killCount +1;
         
             if(killCount >= killsNecesaryForIncrease)
             {
