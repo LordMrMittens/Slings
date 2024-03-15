@@ -47,6 +47,8 @@ public class Bullet : Projectile
             Vector3 direction = (other.transform.position - transform.position).normalized;
             bomb.Disable(direction, timesHit);
             timesHit++;
+            int soundIndex = timesHit >= 8 ? 8 : timesHit;
+            AudioHandler.instance.PlayAudio("Col" + soundIndex.ToString());
         }
     }
     private void OnTriggerEnter2D(Collider2D other)

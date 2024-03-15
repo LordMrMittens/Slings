@@ -60,4 +60,9 @@ public class GameManager : Singleton<GameManager>
         ToggleTimeStop();
         uiControls.ActivateGameOverMenu(scoringManager.score);
     }
+    public static void MoveAndroidApplicationToBack()
+    {
+        AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
+        activity.Call<bool>("moveTaskToBack", true);
+    }
 }

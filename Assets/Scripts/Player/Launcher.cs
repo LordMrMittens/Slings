@@ -24,7 +24,7 @@ public class Launcher : MonoBehaviour
     {
         if(projectile == null || slingShot == null) return;
         pos.z = 0;
-        projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, pos, 0.1f);
+        projectile.transform.position = Vector3.MoveTowards(projectile.transform.position, pos, 0.5f);
         slingShot.UpdatePullingPosition(projectile.transform.position);
         if (slingshotType == SlingshotType.Free)
         {
