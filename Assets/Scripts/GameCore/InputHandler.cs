@@ -7,6 +7,7 @@ public class InputHandler : MonoBehaviour
     PlayerControls playerControls;
     public Touch touch;
     Transform shootingAxis;
+    bool displayingInstructions = true;
     [SerializeField] float validDistanceFromAxis = .8f;
 
     void Start()
@@ -69,6 +70,11 @@ public class InputHandler : MonoBehaviour
         if (Vector2.Distance(mousePos, shootingAxis.position) < validDistanceFromAxis)
         {
             playerControls.PrepareLauncher(new Vector3(mousePos.x, mousePos.y, 0));
+            if (displayingInstructions)
+            {
+                GameManager.instance.uiControls.DeactivateInstructionPanel();
+                displayingInstructions = false;
+            }
         }
     }
     Vector3 HandleInput(Vector3 position)

@@ -10,6 +10,7 @@ public class UIControls : MonoBehaviour
     [field : SerializeField] public GameObject gameOverMenu;
     [field : SerializeField] public GameObject gamePanel;
     [field : SerializeField] public GameObject powerPanel;
+    [field : SerializeField] public GameObject instructionPanel;
 
 
     public void TogglePause()
@@ -47,5 +48,10 @@ public class UIControls : MonoBehaviour
         {
             ForceFocusPause();
         }
+    }
+    public void DeactivateInstructionPanel(){
+
+            instructionPanel.SetActive(false);
+        
     }
 }

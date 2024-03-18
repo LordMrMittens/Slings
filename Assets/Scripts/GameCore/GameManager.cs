@@ -10,7 +10,7 @@ public class GameManager : Singleton<GameManager>
     public  Vector3 screenBounds {get; private set;}
     public ScoringManager scoringManager;
     public LivesManager livesManager;
-    UIControls uiControls;
+    public UIControls uiControls {get; private set;}
     DifficultyHandler difficultyHandler;
     public PowerUpHandler powerUpHandler {get; private set;}
     [SerializeField] GameObject lifeExplosionPrefab;
