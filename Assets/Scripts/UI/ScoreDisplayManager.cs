@@ -7,8 +7,8 @@ public class ScoreDisplayManager : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI scoreText;
 
-    [SerializeField] TMP_Text hiScore;
-    [SerializeField] TMP_Text playerScore;
+    [SerializeField] TMP_Text hiScoreText;
+    [SerializeField] TMP_Text playerScoreText;
     [SerializeField] GameObject newHiScore;
     
     TMP_Text ListOfScoresText;
@@ -19,10 +19,15 @@ public class ScoreDisplayManager : MonoBehaviour
     }
     public void UpdateScore(int score)
     {
-        scoreText.text = "Score: " + score.ToString();
+        if (scoreText != null)
+        {
+            scoreText.text = "Score: " + score.ToString();
+        }
+        
     }
-    public void OnGameOver(int score, bool newHighScore = false){
-        playerScore.text = score.ToString();
+    public void OnGameOver(int score,int hiScore ,bool newHighScore = false){
+        playerScoreText.text = score.ToString();
+        hiScoreText.text = hiScore.ToString();
         if (newHighScore){
             newHiScore.SetActive(true);
         } else {
@@ -41,6 +46,8 @@ public class ScoreDisplayManager : MonoBehaviour
         }
         ListOfScoresText.text = scoresText;
     }
-    
+    public void UpdateScoresList(){
+        UpdateScoresList(GameManager.instance.scoringManager.GetScores());
+    }
 
 }

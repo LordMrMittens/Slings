@@ -27,7 +27,8 @@ public class GameManager : Singleton<GameManager>
     }
     public void MainMenuReset()
     {
-        scoringManager = null;
+        scoringManager = new ScoringManager();
+        scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
         livesManager = null;
         difficultyHandler = null;
         powerUpHandler = null;
@@ -38,7 +39,10 @@ public class GameManager : Singleton<GameManager>
         livesManager = new LivesManager();
         livesManager.SetupLives(lifeExplosionPrefab);
         livesManager.OnGameOver.AddListener(GameOverLogic);
-        scoringManager = new ScoringManager();
+        if(scoringManager == null)
+        {
+            scoringManager = new ScoringManager();
+        }
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
         difficultyHandler = new DifficultyHandler();
         difficultyHandler.SetDifficultyHandler(FindObjectOfType<BombGenerator>(), scoringManager);
@@ -66,4 +70,5 @@ public class GameManager : Singleton<GameManager>
         AndroidJavaObject activity = new AndroidJavaClass("com.unity3d.player.UnityPlayer").GetStatic<AndroidJavaObject>("currentActivity");
         activity.Call<bool>("moveTaskToBack", true);
     }
+
 }

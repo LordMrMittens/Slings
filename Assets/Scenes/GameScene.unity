@@ -1154,6 +1154,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreText: {fileID: 1093976259}
+  hiScoreText: {fileID: 1314545147}
+  playerScoreText: {fileID: 896331417}
+  newHiScore: {fileID: 1210576415}
 --- !u!4 &228964746
 Transform:
   m_ObjectHideFlags: 0
@@ -1184,9 +1187,6 @@ MonoBehaviour:
   pauseMenu: {fileID: 1601173633}
   gameOverMenu: {fileID: 1959721740}
   GamePanel: {fileID: 542029915}
-  hiScore: {fileID: 1314545147}
-  playerScore: {fileID: 896331417}
-  newHiScore: {fileID: 542029915}
 --- !u!114 &228964748
 MonoBehaviour:
   m_ObjectHideFlags: 0

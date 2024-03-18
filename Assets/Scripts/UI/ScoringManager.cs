@@ -34,7 +34,7 @@ public class ScoringManager
     }
     public void OnGameOver()
     {
-        scoreDisplayManager.OnGameOver(score, IsHighScore());
+        scoreDisplayManager.OnGameOver(score,PlayerPrefs.GetInt("score0") ,IsHighScore());
         UpdateScores();
     }
     public void ResetScoresList(){
@@ -46,6 +46,7 @@ public class ScoringManager
     public int[] GetScores()
     {
         int[] scores = new int[scoreListSize];
+        UpdateScores();
         for (int i = 0; i < scoreListSize; i++)
         {
             scores[i] = PlayerPrefs.GetInt("score" + i);
