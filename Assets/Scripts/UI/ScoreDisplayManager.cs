@@ -39,10 +39,10 @@ public class ScoreDisplayManager : MonoBehaviour
     }
     public void UpdateScoresList(int[] scores){
         AssignListOfScoresText();
-        string scoresText = "Hi Scores\n\n\n";
+        string scoresText = "";
         for (int i = 0; i < scores.Length; i++)
         {
-            scoresText += i.ToString() + "-" + scores[i].ToString() + "\n";
+            scoresText += (i+1).ToString() + " - " + scores[i].ToString() + "\n";
         }
         ListOfScoresText.text = scoresText;
     }

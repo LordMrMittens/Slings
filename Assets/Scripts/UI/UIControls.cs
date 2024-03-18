@@ -8,7 +8,8 @@ public class UIControls : MonoBehaviour
 {
     [field : SerializeField] public GameObject pauseMenu;
     [field : SerializeField] public GameObject gameOverMenu;
-    [field : SerializeField] public GameObject GamePanel;
+    [field : SerializeField] public GameObject gamePanel;
+    [field : SerializeField] public GameObject powerPanel;
 
 
     public void TogglePause()
@@ -18,7 +19,8 @@ public class UIControls : MonoBehaviour
     public void ActivateGameOverMenu(int score)
     {
         gameOverMenu.SetActive(true);
-        GamePanel.SetActive(false);
+        gamePanel.SetActive(false);
+        powerPanel.SetActive(false);
 
     }
     public void DeactivateGameOverMenu()
