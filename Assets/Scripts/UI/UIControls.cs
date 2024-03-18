@@ -9,9 +9,7 @@ public class UIControls : MonoBehaviour
     [field : SerializeField] public GameObject pauseMenu;
     [field : SerializeField] public GameObject gameOverMenu;
     [field : SerializeField] public GameObject GamePanel;
-    [SerializeField] TMP_Text hiScore;
-    [SerializeField] TMP_Text playerScore;
-    [SerializeField] GameObject newHiScore;
+
 
     public void TogglePause()
     {
@@ -21,15 +19,10 @@ public class UIControls : MonoBehaviour
     {
         gameOverMenu.SetActive(true);
         GamePanel.SetActive(false);
-        playerScore.text = score.ToString();
 
-        //get hi score
-        //if new hi score, update and display message
-        newHiScore.SetActive(true);
     }
     public void DeactivateGameOverMenu()
     {
-        newHiScore.SetActive(false);
         gameOverMenu.SetActive(false);
     }
     public void ForceFocusPause(){

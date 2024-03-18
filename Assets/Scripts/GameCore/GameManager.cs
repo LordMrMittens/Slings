@@ -59,6 +59,7 @@ public class GameManager : Singleton<GameManager>
     {
         ToggleTimeStop();
         uiControls.ActivateGameOverMenu(scoringManager.score);
+        scoringManager.OnGameOver();
     }
     public static void MoveAndroidApplicationToBack()
     {

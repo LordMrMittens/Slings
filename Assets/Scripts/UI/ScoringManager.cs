@@ -32,15 +32,28 @@ public class ScoringManager
             OnScoreThresholdReached.Invoke();
         }
     }
-    void OnGameOver()
+    public void OnGameOver()
     {
+        scoreDisplayManager.OnGameOver(score, IsHighScore());
         UpdateScores();
     }
-    void ResetScoresList(){
+    public void ResetScoresList(){
         for (int i = 0; i < scoreListSize; i++)
         {
             PlayerPrefs.SetInt("score" + i, 0);
         }
+    }
+    public int[] GetScores()
+    {
+        int[] scores = new int[scoreListSize];
+        for (int i = 0; i < scoreListSize; i++)
+        {
+            scores[i] = PlayerPrefs.GetInt("score" + i);
+        }
+        return scores;
+    }
+    public void SetScoreList(){
+        scoreDisplayManager.UpdateScoresList(GetScores());
     }
     void UpdateScores()
     {
@@ -62,6 +75,10 @@ public class ScoringManager
             }
         }
         PlayerPrefs.Save();
+    }
+    public bool IsHighScore()
+    {
+        return score > PlayerPrefs.GetInt("score0");
     }
 }
 
