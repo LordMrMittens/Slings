@@ -9,7 +9,7 @@ public class ScoringManager
     public UnityEvent OnScoreThresholdReached = new UnityEvent();
     public int score {get; private set;}
     public int difficultyIncreaseThreshold {get; private set;} = 10;
-    const int scoreListSize = 10;
+    const int scoreListSize = 15;
     public void SetScoreDisplayManager(ScoreDisplayManager scoreDisplayManager, int difficultyIncreaseThreshold = 10)
     {
         this.scoreDisplayManager = scoreDisplayManager;
@@ -42,6 +42,7 @@ public class ScoringManager
         {
             PlayerPrefs.SetInt("score" + i, 0);
         }
+        SetScoreList();
     }
     public int[] GetScores()
     {

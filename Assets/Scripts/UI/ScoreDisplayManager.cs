@@ -50,4 +50,9 @@ public class ScoreDisplayManager : MonoBehaviour
         UpdateScoresList(GameManager.instance.scoringManager.GetScores());
     }
 
+    public void ResetScoresList(){
+        GameManager.instance.scoringManager.ResetScoresList();
+        UpdateScoresList();
+    }
+
 }
