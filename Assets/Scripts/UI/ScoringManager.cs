@@ -1,5 +1,6 @@
 
 
+using UnityEngine;
 using UnityEngine.Events;
 
 public class ScoringManager
@@ -8,6 +9,7 @@ public class ScoringManager
     public UnityEvent OnScoreThresholdReached = new UnityEvent();
     public int score {get; private set;}
     public int difficultyIncreaseThreshold {get; private set;} = 10;
+    [SerializeField] int scoreListSize = 5;
     public void SetScoreDisplayManager(ScoreDisplayManager scoreDisplayManager, int difficultyIncreaseThreshold = 10)
     {
         this.scoreDisplayManager = scoreDisplayManager;
@@ -30,4 +32,36 @@ public class ScoringManager
             OnScoreThresholdReached.Invoke();
         }
     }
+    void OnGameOver()
+    {
+        UpdateScores();
+    }
+    void ResetScoresList(){
+        for (int i = 0; i < scoreListSize; i++)
+        {
+            PlayerPrefs.SetInt("score" + i, 0);
+        }
+    }
+    void UpdateScores()
+    {
+        for (int i = 0; i < scoreListSize; i++)
+        {
+            if (PlayerPrefs.HasKey("score" + i))
+            {
+                if (score > PlayerPrefs.GetInt("score" + i))
+                {
+                    int tempScore = PlayerPrefs.GetInt("score" + i);
+                    PlayerPrefs.SetInt("score" + i, score);
+                    score = tempScore;
+                }
+            }
+            else
+            {
+                PlayerPrefs.SetInt("score" + i, score);
+                score = 0;
+            }
+        }
+        PlayerPrefs.Save();
+    }
 }
+
