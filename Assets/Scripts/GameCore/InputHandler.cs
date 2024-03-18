@@ -6,10 +6,13 @@ public class InputHandler : MonoBehaviour
 {
     PlayerControls playerControls;
     public Touch touch;
+    Transform shootingAxis;
+    [SerializeField] float validDistanceFromAxis = .8f;
 
     void Start()
     {
         playerControls = GetComponent<PlayerControls>();
+        shootingAxis = GameObject.Find("ShootingAxis").transform;
         touch = new Touch();
     }
 
@@ -61,7 +64,9 @@ public class InputHandler : MonoBehaviour
 
     private void ValidatePosition(Vector3 mousePos)
     {
-        if (mousePos.y < 0)
+        if(shootingAxis == null) {
+            shootingAxis = GameObject.Find("ShootingAxis").transform;}
+        if (Vector2.Distance(mousePos, shootingAxis.position) < validDistanceFromAxis)
         {
             playerControls.PrepareLauncher(new Vector3(mousePos.x, mousePos.y, 0));
         }
