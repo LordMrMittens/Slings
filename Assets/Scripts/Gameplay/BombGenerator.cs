@@ -7,7 +7,7 @@ public class BombGenerator : MonoBehaviour
 {
     [SerializeField] GameObject BombPrefab;
     Vector2 bombCreationBounds;
-    public float creationFrequency{get; private set;} = 1;
+    [field: SerializeField] public float creationFrequency{get; private set;} = 2;
     float timeOfLastBomb;
     void Start()
     {

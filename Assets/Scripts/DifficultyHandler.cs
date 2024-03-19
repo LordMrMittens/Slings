@@ -16,6 +16,6 @@ public class DifficultyHandler
     }
     void IncreaseDifficulty()
     {
-        bombGenerator.SetCreationFrequency(bombGenerator.creationFrequency * 0.9f);
+        bombGenerator.SetCreationFrequency(bombGenerator.creationFrequency * 0.97f);
     }
 }
