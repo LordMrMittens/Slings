@@ -9,12 +9,14 @@ public class ScoringManager
     public UnityEvent OnScoreThresholdReached = new UnityEvent();
     public int score {get; private set;}
     public int difficultyIncreaseThreshold {get; private set;}
+    public float difficultyIncreaseThresholdIncreasePercent {get; private set;}
     int currentDifficultuBuildup;
     const int scoreListSize = 15;
-    public void SetScoreDisplayManager(ScoreDisplayManager scoreDisplayManager, int difficultyIncreaseThreshold = 0)
+    public void SetScoreDisplayManager(ScoreDisplayManager scoreDisplayManager, int difficultyIncreaseThreshold = 0, float difficultyIncreaseThresholdIncreasePercent =0)
     {
         this.scoreDisplayManager = scoreDisplayManager;
         this.difficultyIncreaseThreshold = difficultyIncreaseThreshold;
+        this.difficultyIncreaseThresholdIncreasePercent = difficultyIncreaseThresholdIncreasePercent;
     }
     public void AddScore(int scoreToAdd)
     {
@@ -32,6 +34,7 @@ public class ScoringManager
         if(currentDifficultuBuildup > difficultyIncreaseThreshold)
         {
             currentDifficultuBuildup = 0;
+            difficultyIncreaseThreshold = (int)(difficultyIncreaseThreshold * difficultyIncreaseThresholdIncreasePercent); 
             OnScoreThresholdReached.Invoke();
         }
     }

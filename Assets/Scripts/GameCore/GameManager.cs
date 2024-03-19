@@ -8,6 +8,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     [SerializeField] int difficultyIncreaseThreshold = 20;
+    [SerializeField] float difficultyIncreaseThresholdIncreasePercent = 1.1f;
     public  Vector3 screenBounds {get; private set;}
     public ScoringManager scoringManager;
     public LivesManager livesManager;
@@ -44,7 +45,7 @@ public class GameManager : Singleton<GameManager>
         {
             scoringManager = new ScoringManager();
         }
-        scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>(), difficultyIncreaseThreshold);
+        scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>(), difficultyIncreaseThreshold, difficultyIncreaseThresholdIncreasePercent);
         difficultyHandler = new DifficultyHandler();
         difficultyHandler.SetDifficultyHandler(FindObjectOfType<BombGenerator>(), scoringManager);
         powerUpHandler = FindObjectOfType<PowerUpHandler>();
