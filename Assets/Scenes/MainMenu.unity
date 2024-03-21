@@ -2993,6 +2993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc298358862134346894baaa2b015872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficultyIncreaseThreshold: 20
+  difficultyIncreaseThresholdIncreasePercent: 1
   lifeExplosionPrefab: {fileID: 1878213965997618050, guid: 6ea5b16be8f941342b8ff0c38643609f, type: 3}
 --- !u!1 &1070810061
 GameObject:
