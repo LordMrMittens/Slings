@@ -38,22 +38,29 @@ public class PowerUpHandler : MonoBehaviour
             
         }
     }
-    private void Update() {
+    private void Update()
+    {
+        PowerUpCountdown();
+    }
+
+    private void PowerUpCountdown()
+    {
         if (isActive)
         {
-           powerupCounter += Time.unscaledDeltaTime;
-           if(powerupCounter >= thisPowerupDuration)
-           {
-            Time.timeScale = 1;
-            powerupCounter = 0;
-            currentPowerupBuildup = 0;
-            maxPowerupBuildup *= powerupMaxIncrease;
-            powerUpUI.UpdatePowerUpUI(currentPowerupBuildup, maxPowerupBuildup);
-            isActive = false;
-            playerControls.ResetTimeBetweenShots();
-           }
+            powerupCounter += Time.unscaledDeltaTime;
+            if (powerupCounter >= thisPowerupDuration)
+            {
+                Time.timeScale = 1;
+                powerupCounter = 0;
+                currentPowerupBuildup = 0;
+                maxPowerupBuildup *= powerupMaxIncrease;
+                powerUpUI.UpdatePowerUpUI(currentPowerupBuildup, maxPowerupBuildup);
+                isActive = false;
+                playerControls.ResetTimeBetweenShots();
+            }
         }
     }
+
     public void AddPowerupBuildup(int value)
     {
         killCount = value > KillMultiplierBonusLimit ? killCount + value : killCount +1;
