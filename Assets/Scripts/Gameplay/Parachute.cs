@@ -53,8 +53,7 @@ public class Parachute : MonoBehaviour
             GameObject[] ActiveIcons = GameManager.instance.livesManager.GetActiveLifeIconTransforms().ToArray();
             if (ActiveIcons.Length > 0 && transform.position.y < steerHeight)
             {
-                GameObject nearestIcon = GetClosestIcon(ActiveIcons);
-                Vector2 direction = (nearestIcon.transform.position - transform.position).normalized;
+                Vector2 direction = (GetClosestIcon(ActiveIcons).transform.position - transform.position).normalized;
                 direction.y = 0;
                 rb.AddForce(direction * steerSpeed, ForceMode2D.Force);
             }
