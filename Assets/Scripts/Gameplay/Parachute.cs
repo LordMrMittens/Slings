@@ -24,6 +24,9 @@ public class Parachute : MonoBehaviour
     void Update()
     {
         Sway();
+        
+    }
+    private void FixedUpdate() {
         Steer();
     }
     void Sway(){
