@@ -32,8 +32,8 @@ public class GameManager : Singleton<GameManager>
     public void MainMenuReset()
     {
         scoringManager = new ScoringManager();
-        gameSettingsHandler = new GameSettingsHandler();
         uiControls = FindObjectOfType<UIControls>();
+        gameSettingsHandler = new GameSettingsHandler();
         gameSettingsHandler.LoadVolumes();
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
         livesManager = null;
@@ -54,6 +54,7 @@ public class GameManager : Singleton<GameManager>
         difficultyHandler.SetDifficultyHandler(FindObjectOfType<BombGenerator>(), scoringManager);
         powerUpHandler = FindObjectOfType<PowerUpHandler>();
         uiControls = FindObjectOfType<UIControls>();
+        gameSettingsHandler.LoadVolumes();
         isPaused = false;
         if(Time.timeScale == 0)
         {
