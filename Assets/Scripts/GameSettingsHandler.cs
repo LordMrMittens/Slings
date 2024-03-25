@@ -7,19 +7,29 @@ public class GameSettingsHandler : MonoBehaviour
 {
     Slider musicSlider;
     Slider sfxSlider;
-    float musicVolume = 0.5f;
-    float sfxVolume = 0.5f;
 
     void SetupSliders()
     {
         musicSlider = GameObject.Find("MusicSlider").GetComponent<Slider>();
         sfxSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
-        musicSlider.value = musicVolume;
-        sfxSlider.value = sfxVolume;
+
     }
-    public void SetMusicVolume(float volume)
+    public void SetVolumes()
     {
-        musicVolume = volume;
-        AudioListener.volume = musicVolume;
+        if (musicSlider == null || sfxSlider == null)
+        {
+            SetupSliders();
+        }
+        PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
+    }
+    public void LoadVolumes()
+    {
+        if (musicSlider == null || sfxSlider == null)
+        {
+            SetupSliders();
+        }
+        musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
+        sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
     }
 }
