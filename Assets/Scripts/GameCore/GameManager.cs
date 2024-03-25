@@ -15,6 +15,8 @@ public class GameManager : Singleton<GameManager>
     public UIControls uiControls {get; private set;}
     DifficultyHandler difficultyHandler;
     public PowerUpHandler powerUpHandler {get; private set;}
+    public GameSettingsHandler gameSettingsHandler {get; private set;}
+    
     [SerializeField] GameObject lifeExplosionPrefab;
     public bool isPaused {get; private set;} = false;
 
@@ -30,6 +32,8 @@ public class GameManager : Singleton<GameManager>
     public void MainMenuReset()
     {
         scoringManager = new ScoringManager();
+        gameSettingsHandler = new GameSettingsHandler();
+        gameSettingsHandler.LoadVolumes();
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
         livesManager = null;
         difficultyHandler = null;

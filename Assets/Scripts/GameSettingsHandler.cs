@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameSettingsHandler : MonoBehaviour
+public class GameSettingsHandler
 {
     Slider musicSlider;
     Slider sfxSlider;
@@ -21,6 +21,7 @@ public class GameSettingsHandler : MonoBehaviour
             SetupSliders();
         }
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
+        AudioHandler.instance.UpdateMusicVolume();
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
     public void LoadVolumes()
@@ -31,5 +32,13 @@ public class GameSettingsHandler : MonoBehaviour
         }
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
+    }
+    public float GetVolume(string volumeType = "Music")
+    {
+        if (musicSlider == null || sfxSlider == null)
+        {
+            SetupSliders();
+        }
+        return volumeType == "Music" ? musicSlider.value : sfxSlider.value;
     }
 }

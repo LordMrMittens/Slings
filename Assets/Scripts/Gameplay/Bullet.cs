@@ -48,7 +48,7 @@ public class Bullet : Projectile
             bomb.Disable(direction, timesHit);
             timesHit++;
             if (timesHit >= 8) return;
-            AudioHandler.instance.PlayAudio("Col" + timesHit.ToString());
+            AudioHandler.instance.PlayAudioEffect("Col" + timesHit.ToString());
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
