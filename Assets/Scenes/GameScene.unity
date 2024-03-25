@@ -1189,6 +1189,8 @@ MonoBehaviour:
   gamePanel: {fileID: 542029915}
   powerPanel: {fileID: 899164720}
   instructionPanel: {fileID: 2060770900}
+  SfxSlider: {fileID: 711401439}
+  MusicSlider: {fileID: 168386969}
 --- !u!114 &228964748
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1881,6 +1883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficultyIncreaseThreshold: 20
+  difficultyIncreaseThresholdIncreasePercent: 1.1
   lifeExplosionPrefab: {fileID: 2077965326976573985, guid: ebd873925a685674f85e856d4e8112ee, type: 3}
 --- !u!4 &379652491
 Transform:
@@ -2892,7 +2895,7 @@ GameObject:
   - component: {fileID: 711401438}
   - component: {fileID: 711401439}
   m_Layer: 5
-  m_Name: SfxSlider
+  m_Name: SFXSlider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

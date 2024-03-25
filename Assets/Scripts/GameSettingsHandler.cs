@@ -10,8 +10,8 @@ public class GameSettingsHandler
 
     void SetupSliders()
     {
-        musicSlider = GameObject.Find("MusicSlider").GetComponent<Slider>();
-        sfxSlider = GameObject.Find("SFXSlider").GetComponent<Slider>();
+        musicSlider = GameManager.instance.uiControls.MusicSlider;
+        sfxSlider = GameManager.instance.uiControls.SfxSlider;
 
     }
     public void SetVolumes()
@@ -21,7 +21,8 @@ public class GameSettingsHandler
             SetupSliders();
         }
         PlayerPrefs.SetFloat("MusicVolume", musicSlider.value);
-        AudioHandler.instance.UpdateMusicVolume();
+        if (AudioHandler.instance != null){
+        AudioHandler.instance.UpdateMusicVolume();}
         PlayerPrefs.SetFloat("SFXVolume", sfxSlider.value);
     }
     public void LoadVolumes()
@@ -32,13 +33,5 @@ public class GameSettingsHandler
         }
         musicSlider.value = PlayerPrefs.GetFloat("MusicVolume", 0.5f);
         sfxSlider.value = PlayerPrefs.GetFloat("SFXVolume", 0.5f);
-    }
-    public float GetVolume(string volumeType = "Music")
-    {
-        if (musicSlider == null || sfxSlider == null)
-        {
-            SetupSliders();
-        }
-        return volumeType == "Music" ? musicSlider.value : sfxSlider.value;
     }
 }

@@ -33,12 +33,12 @@ public class GameManager : Singleton<GameManager>
     {
         scoringManager = new ScoringManager();
         gameSettingsHandler = new GameSettingsHandler();
+        uiControls = FindObjectOfType<UIControls>();
         gameSettingsHandler.LoadVolumes();
         scoringManager.SetScoreDisplayManager(FindObjectOfType<ScoreDisplayManager>());
         livesManager = null;
         difficultyHandler = null;
         powerUpHandler = null;
-        uiControls = null;
     }
     public void GameSceneReset() {
         screenBounds = Camera.main.ScreenToWorldPoint(Vector2.zero);

@@ -11,8 +11,12 @@ public class UIControls : MonoBehaviour
     [field : SerializeField] public GameObject gamePanel;
     [field : SerializeField] public GameObject powerPanel;
     [field : SerializeField] public GameObject instructionPanel;
-
-
+    [field : SerializeField] public Slider SfxSlider;
+    [field : SerializeField] public Slider MusicSlider;
+    private void Start() {
+        SfxSlider.onValueChanged.AddListener(delegate {GameManager.instance.gameSettingsHandler.SetVolumes();});
+        MusicSlider.onValueChanged.AddListener(delegate {GameManager.instance.gameSettingsHandler.SetVolumes();});
+    }
     public void TogglePause()
     {
         GameManager.instance.ToggleTimeStop();
