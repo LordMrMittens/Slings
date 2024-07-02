@@ -1882,8 +1882,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc298358862134346894baaa2b015872, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  difficultyIncreaseThreshold: 20
-  difficultyIncreaseThresholdIncreasePercent: 1.1
+  difficultyIncreaseThreshold: 5
+  difficultyIncreaseThresholdIncreasePercent: 10
   lifeExplosionPrefab: {fileID: 2077965326976573985, guid: ebd873925a685674f85e856d4e8112ee, type: 3}
 --- !u!4 &379652491
 Transform:
@@ -6553,7 +6553,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BombPrefab: {fileID: 909891334152399053, guid: 4b826b572bfc3dc4ca46e1de4f93ad1d, type: 3}
-  <creationFrequency>k__BackingField: 2
+  <creationFrequency>k__BackingField: 1
 --- !u!4 &1917747113
 Transform:
   m_ObjectHideFlags: 0
